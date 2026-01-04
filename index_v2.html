@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a73e8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Шифрувальник">
+    <title>Шифрування Файлів AES-256</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-icon">🔐</div>
+            <h1>Шифрування Файлів</h1>
+            <p class="subtitle">AES-256 • Офлайн • Безпечно</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="encrypt">
+                <span class="tab-icon">🔒</span>
+                Зашифрувати
+            </button>
+            <button class="tab-btn" data-tab="decrypt">
+                <span class="tab-icon">🔓</span>
+                Розшифрувати
+            </button>
+        </div>
+
+        <!-- Encrypt Tab -->
+        <div id="encrypt-tab" class="tab-content active">
+            <div class="card">
+                <h2>🔒 Шифрування файлу</h2>
+
+                <div class="file-input-wrapper">
+                    <input type="file" id="encrypt-file-input" class="file-input" accept="*/*">
+                    <label for="encrypt-file-input" class="file-label">
+                        <span class="file-icon">📁</span>
+                        <span class="file-text">Виберіть файл для шифрування</span>
+                    </label>
+                    <div id="encrypt-file-info" class="file-info hidden"></div>
+                </div>
+
+                <div class="password-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="encrypt-password" class="password-input"
+                               placeholder="Введіть пароль (мін. 8 символів)" minlength="8">
+                        <button type="button" class="toggle-password" data-target="encrypt-password">
+                            👁️
+                        </button>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <input type="password" id="encrypt-password-confirm" class="password-input"
+                               placeholder="Підтвердіть пароль" minlength="8">
+                        <button type="button" class="toggle-password" data-target="encrypt-password-confirm">
+                            👁️
+                        </button>
+                    </div>
+                </div>
+
+                <button id="encrypt-btn" class="btn btn-primary" disabled>
+                    <span class="btn-icon">🔒</span>
+                    Зашифрувати файл
+                </button>
+
+                <div id="encrypt-result" class="result hidden"></div>
+            </div>
+        </div>
+
+        <!-- Decrypt Tab -->
+        <div id="decrypt-tab" class="tab-content">
+            <div class="card">
+                <h2>🔓 Розшифрування файлу</h2>
+
+                <div class="file-input-wrapper">
+                    <input type="file" id="decrypt-file-input" class="file-input" accept="*/*">
+                    <label for="decrypt-file-input" class="file-label">
+                        <span class="file-icon">📁</span>
+                        <span class="file-text">Виберіть зашифрований файл</span>
+                    </label>
+                    <div id="decrypt-file-info" class="file-info hidden"></div>
+                </div>
+
+                <div class="password-group">
+                    <div class="input-wrapper">
+                        <input type="password" id="decrypt-password" class="password-input"
+                               placeholder="Введіть пароль для розшифрування">
+                        <button type="button" class="toggle-password" data-target="decrypt-password">
+                            👁️
+                        </button>
+                    </div>
+                </div>
+
+                <button id="decrypt-btn" class="btn btn-primary" disabled>
+                    <span class="btn-icon">🔓</span>
+                    Розшифрувати файл
+                </button>
+
+                <div id="decrypt-result" class="result hidden"></div>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-card">
+            <h3>ℹ️ Важлива інформація</h3>
+            <ul class="info-list">
+                <li>✅ <strong>Сумісність:</strong> Файли можна шифрувати на iPhone та розшифровувати на Windows (і навпаки)</li>
+                <li>🔐 <strong>Безпека:</strong> AES-256-CBC з PBKDF2 (100,000 ітерацій)</li>
+                <li>📱 <strong>Офлайн:</strong> Працює без інтернету після встановлення</li>
+                <li>🔒 <strong>Конфіденційність:</strong> Всі дані обробляються локально на вашому пристрої</li>
+                <li>⚠️ <strong>Пароль:</strong> Не забудьте пароль - без нього розшифрувати файл неможливо!</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🔐 Шифрування Файлів v2.0 (Гібридний підхід)</p>
+            <p class="footer-note">Випадковий 256-bit ключ + Захист паролем</p>
+            <p class="footer-note">Сумісний з Windows версією (Python v2)</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/encryptor_v2.js"></script>
+    <script src="js/app_v2.js"></script>
+</body>
+</html>

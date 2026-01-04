@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор іконок</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 { color: #1a73e8; }
+        .info {
+            background: #e8f0fe;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            margin: 20px 0;
+            display: none;
+        }
+        button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1557b0;
+        }
+        .downloads {
+            margin-top: 20px;
+        }
+        a {
+            display: inline-block;
+            margin: 5px;
+            color: #1a73e8;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔐 Генератор іконок для PWA</h1>
+
+    <div class="info">
+        <h3>Інструкція:</h3>
+        <ol>
+            <li>Натисніть кнопку "Згенерувати іконки"</li>
+            <li>Завантажте всі іконки</li>
+            <li>Помістіть іконки в папку <code>/icons/</code></li>
+        </ol>
+        <p><strong>Примітка:</strong> Це генерує прості іконки з емодзі. Для професійної версії створіть іконки в графічному редакторі.</p>
+    </div>
+
+    <button onclick="generateIcons()">Згенерувати іконки</button>
+
+    <div class="downloads" id="downloads"></div>
+
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+
+        function generateIcons() {
+            const downloadsDiv = document.getElementById('downloads');
+            downloadsDiv.innerHTML = '<h3>Завантажити іконки:</h3>';
+
+            sizes.forEach(size => {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+
+                canvas.width = size;
+                canvas.height = size;
+
+                // Градієнтний фон
+                const gradient = ctx.createLinearGradient(0, 0, size, size);
+                gradient.addColorStop(0, '#667eea');
+                gradient.addColorStop(1, '#764ba2');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, size, size);
+
+                // Емодзі замок
+                ctx.font = `${size * 0.5}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🔐', size / 2, size / 2);
+
+                // Створюємо посилання для завантаження
+                canvas.toBlob((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `icon-${size}.png`;
+                    a.textContent = `📥 icon-${size}.png`;
+                    a.style.display = 'block';
+                    downloadsDiv.appendChild(a);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
