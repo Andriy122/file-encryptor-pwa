@@ -2,14 +2,14 @@
  * Service Worker для офлайн роботи PWA
  */
 
-const CACHE_NAME = 'file-encryptor-v1';
+const CACHE_NAME = 'file-encryptor-v3';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/css/styles.css',
-    '/js/encryptor.js',
-    '/js/app.js',
-    '/manifest.json'
+    './',
+    './index.html',
+    './css/styles.css',
+    './js/encryptor_v3.js',
+    './js/app_v3.js',
+    './manifest.json'
 ];
 
 // Встановлення Service Worker та кешування файлів
