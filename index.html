@@ -141,5 +141,22 @@
     <!-- Scripts -->
     <script src="js/encryptor_v3.js"></script>
     <script src="js/app_v3.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker зареєстровано:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('❌ Service Worker НЕ зареєстровано:', error);
+                    });
+            });
+        } else {
+            console.log('⚠️ Service Worker не підтримується браузером');
+        }
+    </script>
 </body>
 </html>
