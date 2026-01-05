@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <!-- Content Security Policy - захист від XSS -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self';">
-
     <meta name="theme-color" content="#1a73e8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Шифрувальник">
-    <title>Шифрування Файлів AES-256-GCM</title>
+    <title>Шифрування Файлів AES-256</title>
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="manifest.json">
@@ -132,14 +128,14 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>🔐 Шифрування Файлів v3.0 (Безпечна версія)</p>
-            <p class="footer-note">AES-256-GCM • 600k PBKDF2 • Authenticated Encryption</p>
-            <p class="footer-note">Сумісний з Windows версією (Python v3)</p>
+            <p>🔐 Шифрування Файлів v2.0 (Гібридний підхід)</p>
+            <p class="footer-note">Випадковий 256-bit ключ + Захист паролем</p>
+            <p class="footer-note">Сумісний з Windows версією (Python v2)</p>
         </footer>
     </div>
 
     <!-- Scripts -->
-    <script src="js/encryptor_v3.js"></script>
-    <script src="js/app_v3.js"></script>
+    <script src="js/encryptor_v2.js"></script>
+    <script src="js/app_v2.js"></script>
 </body>
 </html>
